@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->name('string',255)->nullable();
-            $table->contactperson('string',255)->nullable();
-            $table->contactnumber('string',255)->nullable();
-            $table->address('text')->nullable();
-            $table->logo('string',255)->nullable();
-            $table->created_by('integer')->nullable();
-            $table->updated_by('integer')->nullable();
+            $table->string('name',255)->nullable();
+            $table->string('contactperson',255)->nullable();
+            $table->string('contactnumber',255)->nullable();
+            $table->text('address')->nullable();
+            $table->string('logo',255)->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }

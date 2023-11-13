@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('loads', function (Blueprint $table) {
             $table->id('integer');
-            $table->contract_id('integer');
-            $table->driver_id();
-            $table->customer_id('intege');
-            $table->asset_id('string',255)->enum('weight','distance','fixed');
-            $table->product_id('integer');
-            $table->startdate('date')->nullable();
-            $table->finishdate('date')->nullable();
-            $table->starttime('time')->nullable();
-            $table->finishtime('time')->nullable();
-            $table->totalweight('decimal(10,2)')->nullable();
-            $table->totaldistance('decimal(10,2)')->nullable();
-            $table->chargetype('string',255)->enum('weight','distance','fixed');
-            $table->amount('decimal(10,2)')->default();
+            $table->integer('contract_id');
+            $table->integer('driver_id');
+            $table->integer('customer_id');
+            $table->string('asset_id',255)->enum('weight','distance','fixed');
+            $table->integer('product_id');
+            $table->date('startdate')->nullable();
+            $table->date('finishdate')->nullable();
+            $table->time('starttime')->nullable();
+            $table->time('finishtime')->nullable();
+            $table->decimal('totalweight(10,2)')->nullable();
+            $table->decimal('totaldistance(10,2)')->nullable();
+            $table->string('chargetype',255)->enum('weight','distance','fixed');
+            $table->decimal('amount(10,2)')->default();
             $table->timestamps();
         });
     }

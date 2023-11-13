@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->name('string',255);
-            $table->registrationnumber('string',255);
-            $table->driver_id('integer');
-            $table->registrationcard('string',255)->nullable();
-            $table->gml('decimal(10,2)')->default();
-            $table->cml('decimal(10,2)')->default();
-            $table->hml('decimal(10,2)')->default();
+            $table->string('name',255);
+            $table->string('registrationnumber',255);
+            $table->integer('driver_id');
+            $table->string('registrationcard',255)->nullable();
+            $table->decimal('gml(10,2)')->default();
+            $table->decimal('cml(10,2)')->default();
+            $table->decimal('hml(10,2)')->default();
             $table->timestamps();
         });
     }

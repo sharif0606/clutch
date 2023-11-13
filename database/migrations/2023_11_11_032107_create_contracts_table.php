@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->contractnumber('string',255);
-            $table->customer_id('integer');
-            $table->product_id('string',255)->nullable();
-            $table->chargetype('string',255)->enum('weight','distance','fixed');
-            $table->amount('decimal(10,2)')->default('0');
-            $table->startdate('date')->nullable();
-            $table->finishdate('date')->nullable();
-            $table->collectform('string')->nullable();
-            $table->deliveredto('string')->nullable();
-            $table->totalweight('decimal(10,2)')->nullable();
-            $table->totaldistance('decimal(10,2)')->nullable();
+            $table->string('contractnumber',255);
+            $table->integer('customer_id');
+            $table->string('product_id',255)->nullable();
+            $table->string('chargetype',255)->enum('weight','distance','fixed');
+            $table->decimal('amount(10,2)')->default('0');
+            $table->date('startdate')->nullable();
+            $table->date('finishdate')->nullable();
+            $table->string('collectform')->nullable();
+            $table->string('deliveredto')->nullable();
+            $table->decimal('totalweight(10,2)')->nullable();
+            $table->decimal('totaldistance(10,2)')->nullable();
             $table->timestamps();
         });
     }

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
+    //relation user
+
+    public function rsers(){
+        return $this->hasMany(User::class);
+    }
 }
