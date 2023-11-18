@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->integer('company_id')->nullable();
             $table->integer('brunch_id')->nullable();
+            $table->boolean('full_access')->default(false)->comment('1=>yes 0=>no');
             $table->boolean('status')->default(1)->comment('1 active 0 inactive');
             $table->rememberToken();
             $table->text('access_block')->nullable();

@@ -52,7 +52,7 @@
                                                 @endif
                                             </div>
                                             
-                                            
+                                            @php print_r($errors->all()) @endphp
 
                                             <div class="form-group text-center">
                                                 <button type="submit" class="btn btn-primary  btn-rounded">sign in</button>

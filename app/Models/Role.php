@@ -10,7 +10,7 @@ class Role extends Model
     use HasFactory;
     //relation user
 
-    public function rsers(){
+    public function users(){
         return $this->hasMany(User::class);
     }
 }

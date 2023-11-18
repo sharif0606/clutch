@@ -13,9 +13,10 @@
         
         <!-- Toast CSS -->
         <link href="{{asset('public/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
-            
+      
         <!-- Custom CSS -->
         <link href="{{asset('public/dist/css/style.css')}}" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <!-- Styles -->
         @stack('styles')
     </head>
@@ -1266,7 +1267,9 @@
 	@stack('scripts')
 	<!-- Init JavaScript -->
 	<script src="{{asset('public/dist/js/init.js')}}"></script>
-    
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
 </body>
     
 </html>

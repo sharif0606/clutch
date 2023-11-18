@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthenticationController as auth;
+use App\Http\Controllers\Backend\AuthenticationController as auth;
+use App\Http\Controllers\Backend\UserController as user;
+use App\Http\Controllers\Backend\DashboardController as dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +21,15 @@ Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['checkrole'])->group(function(){
+    Route::get('/dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::resource('/user', user::class);
 });
-Route::get('/dashboard', function () {
-    return view('welcome');
-})->name('dashboard');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/dashboard', function () {
+//     return view('welcome');
+// })->name('dashboard');
 

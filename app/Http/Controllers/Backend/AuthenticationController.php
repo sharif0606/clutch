@@ -50,7 +50,7 @@ class AuthenticationController extends Controller
             }else
                 return redirect()->route('login')->with('error','Your phone number or password is wrong2!');
         }catch(Exception $e){
-            dd($e);
+            //dd($e);
             return redirect()->route('login')->with('error','Your phone number or password is wrong3!');
         }
     }
@@ -59,6 +59,8 @@ class AuthenticationController extends Controller
         return request()->session()->put([
                 'userId'=>encryptor('encrypt',$user->id),
                 'userName'=>encryptor('encrypt',$user->name),
+                'role_id'=>encryptor('encrypt',$user->role_id),
+                'accessType'=>encryptor('encrypt',$user->full_access),
                 'role'=>encryptor('encrypt',$user->role->type),
                 'roleIdentity'=>encryptor('encrypt',$user->role->identity),
                 'language'=>encryptor('encrypt',$user->language),
@@ -69,6 +71,6 @@ class AuthenticationController extends Controller
 
     public function signOut(){
         request()->session()->flush();
-        return redirect('login')->with($this->resMessageHtml(false,'error',currentUserId()));
+        return redirect('login')->with('error','Succesfully Logged Out');
     }
 }
