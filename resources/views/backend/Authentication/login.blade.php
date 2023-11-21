@@ -1,4 +1,4 @@
-@extends('layouts.appAuth')
+@extends('backend.layouts.appAuth')
 
 @section('content')
     <div class="wrapper pa-0">

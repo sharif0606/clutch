@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
@@ -13,7 +14,7 @@ use Exception;
 class AuthenticationController extends Controller
 {
     public function signUpForm(){
-        return view('authentication.register');
+        return view('backend.authentication.register');
     }
 
     public function signUpStore(SignupRequest $request){
@@ -35,7 +36,7 @@ class AuthenticationController extends Controller
     }
 
     public function signInForm(){
-        return view('authentication.login');
+        return view('backend.authentication.login');
     }
 
     public function signInCheck(SigninRequest $request){
@@ -71,6 +72,6 @@ class AuthenticationController extends Controller
 
     public function signOut(){
         request()->session()->flush();
-        return redirect('login')->with('error','Succesfully Logged Out');
+        return redirect('login')->with('success','Succesfully Logged Out');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use Illuminate\Http\Request;
+use Toastr;
 
 class BranchController extends Controller
 {
@@ -12,7 +13,8 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        $data=Branch::paginate(10);
+        return view('branch.index',compact('data'));
     }
 
     /**
@@ -20,7 +22,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        return view('branch.create');
     }
 
     /**
@@ -28,7 +30,29 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $data=new Branch();
+            $data->company_id=1;
+            $data->name=$request->Name;
+            $data->contactperson=$request->ContactPerson;
+            $data->contactnumber=$request->ContactNumber;
+            $data->address=$request->address;
+
+            if($request->hasFile('logo')){
+                $imageName = rand(111,999).time().'.'.$request->logo->extension();
+                $request->logo->move(public_path('uploads/users'), $imageName);
+                $data->logo=$imageName;
+            }
+            $data->created_by=currentUserId();
+            if($data->save()){
+                Toastr::success('Successfully saved');
+                return redirect()->route('branch.index');
+            }
+        }catch(Exception $p){
+            //dd($e);
+            return redirect()->back()->withInput()->with('error','Please try again');
+        }
+
     }
 
     /**
@@ -42,24 +66,48 @@ class BranchController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Branch $branch)
+    public function edit( $id)
     {
-        //
+        $branch=Branch::findOrFail(encryptor('decrypt',$id));
+        return view('branch.edit',compact('branch'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $data=Branch::findOrFail(encryptor('decrypt',$id));
+            $data->name=$request->Name;
+            $data->contactperson=$request->ContactPerson;
+            $data->contactnumber=$request->contactNumber;
+            $data->address=$request->address;
+            if($request->hasFile('logo')){
+                $imageName = rand(111,999).time().'.'.$request->logo->extension();
+                $request->logo->move(public_path('uploads/users'), $imageName);
+                $data->logo=$imageName;
+            }
+            $data->Updated_by=currentUserId();
+            if($data->save()){
+                Toastr::success('Successfully saved');
+                return redirect()->route('branch.index');
+            }
+        }catch(Exception $p){
+            //dd($e);
+            return redirect()->back()->withInput()->with('error','Please try again');
+        }
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Branch $branch)
+    public function destroy( $id)
     {
-        //
+        $branch=Branch::findOrFail(encryptor('decrypt',$id));
+
+        Toastr::warning('Deleted Permanently!');
+        return redirect()->back();
     }
 }
