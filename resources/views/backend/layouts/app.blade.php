@@ -347,7 +347,7 @@
 					<!-- User Profile -->
 					<li>
 						<div class="user-profile text-center">
-							<img src="../img/user1.png" alt="user_auth" class="user-auth-img img-circle"/>
+							<img src="public/user_auth.jpg" alt="user_auth" class="user-auth-img img-circle"/>
 							<div class="dropdown mt-5">
 							<a href="#" class="dropdown-toggle pr-0 bg-transparent" data-toggle="dropdown">ryan georgian <span class="caret"></span></a>
 							<ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
@@ -395,10 +395,10 @@
 					<a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="dashboard_dr" class="collapse collapse-level-1">
 						<li>
-							<a href="index.html">Analytical</a>
+							<a href="{{route('user.index')}}">User</a>
 						</li>
 						<li>
-							<a href="index2.html">Demographic</a>
+							<a href="{{route('branch.index')}}">Branch</a>
 						</li>
 						<li>
 							<a href="index3.html">Project</a>
