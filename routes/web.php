@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AuthenticationController as auth;
 use App\Http\Controllers\Backend\UserController as user;
+use App\Http\Controllers\Backend\RoleController as role;
 use App\Http\Controllers\BranchController as branch;
+use App\Http\Controllers\CompanyController as company;
 use App\Http\Controllers\Backend\DashboardController as dashboard;
+use App\Http\Controllers\Backend\PermissionController as permission;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +25,26 @@ Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'signOut'])->name('logOut');
 
-Route::middleware(['checkrole'])->group(function(){
-    Route::get('/dashboard', [dashboard::class,'index'])->name('dashboard');
-    Route::resource('/user', user::class);
-    Route::resource('/branch', branch::class);
+
+
+Route::middleware(['checkauth'])->prefix('admin')->group(function(){
+    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+});
+Route::middleware(['checkrole'])->prefix('admin')->group(function(){
+    Route::resource('user', user::class);
+    Route::resource('role', role::class);
+    Route::resource('branch', branch::class);
+    Route::resource('companies', company::class);
+    Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');
+    Route::post('permission/{role}', [permission::class,'save'])->name('permission.save');
 });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+ 
+
+
+    // Route::get('/', function () {
+    //     return view('frontend.home');
+    // });
 // Route::get('/dashboard', function () {
 //     return view('welcome');
 // })->name('dashboard');

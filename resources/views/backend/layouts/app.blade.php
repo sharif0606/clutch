@@ -401,7 +401,7 @@
 							<a href="{{route('branch.index')}}">Branch</a>
 						</li>
 						<li>
-							<a href="index3.html">Project</a>
+							<a href="{{route('role.index')}}">Role</a>
 						</li>
 						<li>
 							<a href="index4.html">Hospital</a>

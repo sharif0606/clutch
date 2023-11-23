@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
@@ -26,13 +27,14 @@ class AuthenticationController extends Controller
             $user->password=Hash::make($request->password);
             $user->role_id=4;
             if($user->save())
-                return redirect('login')->with('success','Successfully Registered');
-                else
-                    return redirect('login')->with('danger','Please try again');
+                return redirect('login')->with('success','Successfully Registred');
+            else
+                return redirect('login')->with('danger','Please try again');
         }catch(Exception $e){
-            dd($e);
-            return redirect('login')->with('danger','Please try again');
+            //dd($e);
+            return redirect('login')->with('danger','Please try again');;
         }
+
     }
 
     public function signInForm(){
@@ -41,18 +43,22 @@ class AuthenticationController extends Controller
 
     public function signInCheck(SigninRequest $request){
         try{
-            $user=User::where('contact_no_en',$request->username)->orWhere('email',$request->username)->first();
+            $user=User::where('contact_no_en',$request->username)
+                        ->orWhere('email',$request->username)->first();
             if($user){
-                if(Hash::check($request->password , $user->password)){
-                    $this->setSession($user);
-                    return redirect()->route('dashboard')->with('success','Successfully login');
+                if($user->status==1){
+                    if(Hash::check($request->password , $user->password)){
+                        $this->setSession($user);
+                        return redirect()->route('dashboard')->with('success','Successfully login');
+                    }else
+                        return redirect()->route('login')->with('error','Your phone number or password is wrong!');
                 }else
-                    return redirect()->route('login')->with('error','Your phone number or password is wrong1!');
-            }else
-                return redirect()->route('login')->with('error','Your phone number or password is wrong2!');
+                    return redirect()->route('login')->with('error','You are not active user. Please contact to authority!');
+        }else
+                return redirect()->route('login')->with('error','Your phone number or password is wrong!');
         }catch(Exception $e){
             //dd($e);
-            return redirect()->route('login')->with('error','Your phone number or password is wrong3!');
+            return redirect()->route('login')->with('error','Your phone number or password is wrong!');
         }
     }
 
@@ -70,8 +76,8 @@ class AuthenticationController extends Controller
         );
     }
 
-    public function signOut(){
+    public function singOut(){
         request()->session()->flush();
-        return redirect('login')->with('success','Succesfully Logged Out');
+        return redirect('login')->with('danger','Succfully Logged Out');
     }
 }
