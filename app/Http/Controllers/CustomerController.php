@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Toastr;
 
 class CustomerController extends Controller
 {
@@ -12,7 +13,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $data=Customer::paginate(10);
+        return view('backend.customers.index',compact('data'));
     }
 
     /**
@@ -20,7 +22,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+         return view('backend.customers.create');
     }
 
     /**
@@ -28,7 +30,22 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       try{
+            $data=new Customer();
+            $data->name=$request->name;
+            $data->contactperson=$request->contactperson;
+            $data->contactnumber=$request->contactnumber;
+            $data->email=$request->email;
+            $data->address=$request->address;
+
+            if($data->save()){
+                Toastr::success('Successfully saved');
+                return redirect()->route('customers.index');
+            }
+        }catch(Exception $p){
+            //dd($e);
+            return redirect()->back()->withInput()->with('error','Please try again');
+        }
     }
 
     /**
@@ -42,24 +59,44 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
-        //
+        $customer=Customer::findOrFail(encryptor('decrypt',$id));
+        return view('backend.customers.edit',compact('customer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $data=Customer::findOrFail(encryptor('decrypt',$id));
+            $data->name=$request->name;
+            $data->contactperson=$request->contactperson;
+            $data->contactnumber=$request->contactnumber;
+            $data->email=$request->email;
+            $data->address=$request->address;
+            
+          
+            if($data->save()){
+                Toastr::success('Successfully saved');
+                return redirect()->route('customers.index');
+            }
+        }catch(Exception $p){
+            //dd($e);
+            return redirect()->back()->withInput()->with('error','Please try again');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
-        //
+        $customer=Customer::findOrFail(encryptor('decrypt',$id));
+        if($customer->delete())
+            Toastr::warning('Deleted Permanently!');
+            return redirect()->back();
     }
 }

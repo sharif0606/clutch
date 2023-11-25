@@ -44,7 +44,7 @@ class UserController extends Controller
             $data->name_bn=$request->userName_bn;
             $data->email=$request->EmailAddress;
             $data->contact_no_en=$request->contactNumber_en;
-            $data->contact_no_bn=$request->contactNumber_bn;
+            $data->contactNumber_bn=$request->contactNumber_bn;
             $data->role_id=$request->roleId;
             $data->status=$request->status;
             $data->full_access=$request->fullAccess;
@@ -63,7 +63,7 @@ class UserController extends Controller
                 return redirect()->back()->withInput()->with('error','Please try again');
             
         }catch(Exception $e){
-            //dd($e);
+            dd($e);
             return redirect()->back()->withInput()->with('error','Please try again');
         }
     
@@ -99,7 +99,7 @@ class UserController extends Controller
             $data->name_bn=$request->userName_bn;
             $data->email=$request->EmailAddress;
             $data->contact_no_en=$request->contactNumber_en;
-            $data->contact_no_bn=$request->contactNumber_bn;
+            $data->contactNumber_bn=$request->contactNumber_bn;
             $data->role_id=$request->roleId;
             $data->status=$request->status;
             $data->full_access=$request->fullAccess;

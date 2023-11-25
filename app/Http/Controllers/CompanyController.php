@@ -32,7 +32,7 @@ class CompanyController extends Controller
     {
          try{
             $data=new Company();
-            $data->name=$request->Name;
+            $data->name=$request->name;
             $data->contactperson=$request->contactperson;
             $data->contactnumber=$request->contactnumber;
             $data->address=$request->address;
@@ -45,7 +45,7 @@ class CompanyController extends Controller
             $data->created_by=currentUserId();
             if($data->save()){
                 Toastr::success('Successfully saved');
-                return redirect()->route('backend.companies.index');
+                return redirect()->route('companies.index');
             }
         }catch(Exception $p){
             //dd($e);
