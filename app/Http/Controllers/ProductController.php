@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Toastr;
 
 class ProductController extends Controller
 {
@@ -12,7 +13,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $data=Product::paginate(10);
+        return view('backend.products.index',compact('data'));
     }
 
     /**
@@ -20,7 +22,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+       return view('backend.products.create');
     }
 
     /**
@@ -28,7 +30,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $data=new Product();
+            $data->name=$request->name;
+            $data->product_type_id=$request->product_type_id;
+            $data->unit_id=$request->unit_id;
+
+            if($data->save()){
+                Toastr::success('Successfully saved');
+                return redirect()->route('products.index');
+            }
+        }catch(Exception $p){
+            //dd($e);
+            return redirect()->back()->withInput()->with('error','Please try again');
+        }
     }
 
     /**
@@ -42,24 +57,41 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product=Product::findOrFail(encryptor('decrypt',$id));
+        return view('backend.products.edit',compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+       try{
+            $data=Product::findOrFail(encryptor('decrypt',$id));
+            $data->name=$request->name;
+            $data->product_type_id=$request->product_type_id;
+            $data->unit_id=$request->unit_id;
+
+            if($data->save()){
+                Toastr::success('Successfully saved');
+                return redirect()->route('products.index');
+            }
+        }catch(Exception $p){
+            //dd($e);
+            return redirect()->back()->withInput()->with('error','Please try again');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product=Product::findOrFail(encryptor('decrypt',$id));
+        if($product->delete())
+            Toastr::warning('Deleted Permanently!');
+            return redirect()->back();
     }
 }

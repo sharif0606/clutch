@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2023 at 08:29 AM
+-- Generation Time: Nov 26, 2023 at 09:45 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -33,12 +33,20 @@ CREATE TABLE `assets` (
   `registrationnumber` varchar(255) NOT NULL,
   `driver_id` int(11) NOT NULL,
   `registrationcard` varchar(255) DEFAULT NULL,
-  `gml(10,2)` decimal(8,2) NOT NULL DEFAULT 1.00,
-  `cml(10,2)` decimal(8,2) NOT NULL DEFAULT 1.00,
-  `hml(10,2)` decimal(8,2) NOT NULL DEFAULT 1.00,
+  `gml` decimal(8,2) NOT NULL DEFAULT 1.00,
+  `cml` decimal(8,2) NOT NULL DEFAULT 1.00,
+  `hml` decimal(8,2) NOT NULL DEFAULT 1.00,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `assets`
+--
+
+INSERT INTO `assets` (`id`, `name`, `registrationnumber`, `driver_id`, `registrationcard`, `gml`, `cml`, `hml`, `created_at`, `updated_at`) VALUES
+(1, 'Cargo', '10200', 402, 'MK120', '420.00', '320.00', '250.00', '2023-11-25 23:12:01', '2023-11-25 23:16:06'),
+(3, 'Truck', '10300', 403, 'MK121', '450.00', '420.00', '380.00', '2023-11-25 23:20:31', '2023-11-25 23:20:31');
 
 -- --------------------------------------------------------
 
@@ -107,16 +115,24 @@ CREATE TABLE `contracts` (
   `customer_id` int(11) NOT NULL,
   `product_id` varchar(255) DEFAULT NULL,
   `chargetype` varchar(255) NOT NULL,
-  `amount(10,2)` decimal(8,2) NOT NULL DEFAULT 0.00,
+  `amount` decimal(8,2) NOT NULL DEFAULT 0.00,
   `startdate` date DEFAULT NULL,
   `finishdate` date DEFAULT NULL,
   `collectform` varchar(255) DEFAULT NULL,
   `deliveredto` varchar(255) DEFAULT NULL,
-  `totalweight(10,2)` decimal(8,2) DEFAULT NULL,
-  `totaldistance(10,2)` decimal(8,2) DEFAULT NULL,
+  `totalweight` decimal(8,2) DEFAULT NULL,
+  `totaldistance` decimal(8,2) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contracts`
+--
+
+INSERT INTO `contracts` (`id`, `contractnumber`, `customer_id`, `product_id`, `chargetype`, `amount`, `startdate`, `finishdate`, `collectform`, `deliveredto`, `totalweight`, `totaldistance`, `created_at`, `updated_at`) VALUES
+(2, '01516154210', 3, '102', 'cml', '15000.00', '2024-01-01', '2024-01-05', 'Dhaka', 'Chattogram', '350.00', '320.00', '2023-11-26 01:19:04', '2023-11-26 01:19:04'),
+(3, '01516154210', 2, '101', 'hml', '13000.00', '2024-02-15', '2024-02-27', 'Khulna', 'Dhaka', '210.00', '550.00', '2023-11-26 01:25:12', '2023-11-26 01:25:12');
 
 -- --------------------------------------------------------
 
@@ -150,7 +166,7 @@ INSERT INTO `customers` (`id`, `name`, `contactperson`, `contactnumber`, `email`
 --
 
 CREATE TABLE `loads` (
-  `integer` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `contract_id` int(11) NOT NULL,
   `driver_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -160,13 +176,20 @@ CREATE TABLE `loads` (
   `finishdate` date DEFAULT NULL,
   `starttime` time DEFAULT NULL,
   `finishtime` time DEFAULT NULL,
-  `totalweight(10,2)` decimal(8,2) DEFAULT NULL,
-  `totaldistance(10,2)` decimal(8,2) DEFAULT NULL,
+  `totalweight` decimal(8,2) DEFAULT NULL,
+  `totaldistance` decimal(8,2) DEFAULT NULL,
   `chargetype` varchar(255) NOT NULL,
-  `amount(10,2)` decimal(8,2) NOT NULL DEFAULT 1.00,
+  `amount` decimal(8,2) NOT NULL DEFAULT 1.00,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `loads`
+--
+
+INSERT INTO `loads` (`id`, `contract_id`, `driver_id`, `customer_id`, `asset_id`, `product_id`, `startdate`, `finishdate`, `starttime`, `finishtime`, `totalweight`, `totaldistance`, `chargetype`, `amount`, `created_at`, `updated_at`) VALUES
+(1, 102, 403, 3, '1720', 306, NULL, NULL, NULL, NULL, '230.00', '550.00', 'gml', '29000.00', '2023-11-26 02:12:25', '2023-11-26 02:27:42');
 
 -- --------------------------------------------------------
 
@@ -281,6 +304,14 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `product_type_id`, `unit_id`, `created_at`, `updated_at`) VALUES
+(1, 'Fuad', 206, 7312, '2023-11-26 02:43:05', '2023-11-26 02:43:21'),
+(3, 'Noman', 207, 7311, '2023-11-26 02:43:50', '2023-11-26 02:43:50');
+
 -- --------------------------------------------------------
 
 --
@@ -293,6 +324,13 @@ CREATE TABLE `product_types` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_types`
+--
+
+INSERT INTO `product_types` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Furniture', '2023-11-25 21:58:08', '2023-11-25 21:58:47');
 
 -- --------------------------------------------------------
 
@@ -330,6 +368,13 @@ CREATE TABLE `units` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `units`
+--
+
+INSERT INTO `units` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, '250 petrol', '2023-11-25 22:13:19', '2023-11-25 22:15:38');
 
 -- --------------------------------------------------------
 
@@ -408,7 +453,7 @@ ALTER TABLE `customers`
 -- Indexes for table `loads`
 --
 ALTER TABLE `loads`
-  ADD PRIMARY KEY (`integer`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -475,7 +520,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `assets`
 --
 ALTER TABLE `assets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `branches`
@@ -493,7 +538,7 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -505,7 +550,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `loads`
 --
 ALTER TABLE `loads`
-  MODIFY `integer` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -529,13 +574,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product_types`
 --
 ALTER TABLE `product_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -547,7 +592,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
