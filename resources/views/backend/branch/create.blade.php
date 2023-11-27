@@ -21,7 +21,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="Name">Name<i class="text-danger">*</i></label>
                         <input type="text" id="Name" class="form-control" value="{{ old('Name')}}" name="Name">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="ContactPerson">ContactPerson <i class="text-danger">*</i></label>
                         <input type="text" id="ContactPerson" class="form-control" value="{{ old('ContactPerson')}}" name="ContactPerson">
@@ -40,7 +40,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="contactNumber">Contact Number<i class="text-danger">*</i></label>
                         <input type="text" id="contactNumber" class="form-control" value="{{ old('contactNumber')}}" name="ContactNumber">
@@ -49,7 +49,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="address">Address</label>
                         <input type="text" id="address" class="form-control" value="{{ old('address')}}" name="address">

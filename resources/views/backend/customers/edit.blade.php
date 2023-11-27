@@ -6,7 +6,7 @@
   <!-- // Basic multiple Column Form section start -->
     <section id="multiple-column-form">
         <div class="row match-height">
-            <div class="col-12">
+            <div class="col-xs-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
@@ -14,7 +14,7 @@
                                  @csrf
                                 @method('PATCH')
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="name">Name<i class="text-danger">*</i></label>
                                             <input type="text" id="name" class="form-control" value="{{ old('name',$customer->name)}}" name="name">
@@ -24,7 +24,7 @@
                                         </div>
                                     </div>
                                 
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="contactperson">ContactPerson <i class="text-danger">*</i></label>
                                             <input type="text" id="contactperson" class="form-control" value="{{ old('contactperson',$customer->contactperson)}}" name="contactperson">
@@ -33,7 +33,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="contactnumber">Contact Number (English) <i class="text-danger">*</i></label>
                                             <input type="text" id="contactnumber" class="form-control" value="{{ old('contactnumber',$customer->contactnumber)}}" name="contactnumber">
@@ -42,7 +42,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="text" id="email" class="form-control" value="{{ old('email',$customer->email)}}" name="email">
@@ -51,7 +51,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="address">Address</label>
                                             <input type="text" id="address" class="form-control" value="{{ old('address',$customer->address)}}" name="address">
@@ -65,7 +65,7 @@
                                 </div>
                                 
                                 <div class="row">
-                                    <div class="col-12 d-flex justify-content-end">
+                                    <div class="col-xs-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
                                         
                                     </div>

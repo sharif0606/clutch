@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-12">
+    <div class="col-xs-12">
         <form class="form" method="post" enctype="multipart/form-data" action="{{route('branch.update',encryptor('encrypt',$branch->id))}}">
             @csrf
             @method('PATCH')
@@ -22,7 +22,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="Name">Name<i class="text-danger">*</i></label>
                         <input type="text" id="Name" class="form-control" value="{{ old('Name',$branch->name)}}" name="Name">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="ContactPerson">ContactPerson <i class="text-danger">*</i></label>
                         <input type="text" id="ContactPerson" class="form-control" value="{{ old('ContactPerson',$branch->contactperson)}}" name="ContactPerson">
@@ -41,7 +41,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="contactNumber">Contact Number (English) <i class="text-danger">*</i></label>
                         <input type="text" id="contactNumber" class="form-control" value="{{ old('contactNumber',$branch->contactnumber)}}" name="contactNumber">
@@ -50,7 +50,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="address">Address</label>
                         <input type="text" id="address" class="form-control" value="{{ old('address',$branch->address)}}" name="address">

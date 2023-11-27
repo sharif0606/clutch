@@ -4,11 +4,11 @@
 
 @section('content')
 <div class="row">
-    <div class="col-12">
+    <div class="col-xs-12">
         <form class="form" method="post" enctype="multipart/form-data" action="{{route('assets.store')}}">
             @csrf
             <div class="row">
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="name">Name<i class="text-danger">*</i></label>
                         <input type="text" id="name" class="form-control" value="{{ old('name')}}" name="name">
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="registrationnumber">Registration Number <i class="text-danger">*</i></label>
                         <input type="text" id="registrationnumber" class="form-control" value="{{ old('registrationnumber')}}" name="registrationnumber">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="registrationcard">Registration Card</label>
                         <input type="file" id="registrationcard" class="form-control" value="{{ old('registrationcard')}}" name="registrationcard">
@@ -50,7 +50,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="gml">General Mass Limits (GML)</label>
                         <input type="text" id="gml" class="form-control" value="{{ old('gml')}}" name="gml">
@@ -59,7 +59,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-xs-12">
                     <div class="form-group">
                         <label for="cml">Concessional Mass Limits (CML)</label>
                         <input type="text" id="cml" class="form-control" value="{{ old('cml')}}" name="cml">

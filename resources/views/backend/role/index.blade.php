@@ -5,7 +5,7 @@
 
 <!-- Bordered table start -->
 <div class="row">
-    <div class="col-12">
+    <div class="col-xs-12">
         <div class="card">
             
             <!-- table bordered -->

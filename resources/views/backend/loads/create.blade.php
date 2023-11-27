@@ -6,14 +6,14 @@
   <!-- // Basic multiple Column Form section start -->
     <section id="multiple-column-form">
         <div class="row match-height">
-            <div class="col-12">
+            <div class="col-xs-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form" method="post" enctype="multipart/form-data" action="{{route('loads.store')}}">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="contract_id">Contract Id<i class="text-danger">*</i></label>
                                             <input type="text" id="contract_id" class="form-control" value="{{ old('contract_id')}}" name="contract_id">
@@ -23,7 +23,7 @@
                                         </div>
                                     </div>
                                 
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="driver_id">Driver Id <i class="text-danger">*</i></label>
                                             <input type="text" id="driver_id" class="form-control" value="{{ old('driver_id')}}" name="driver_id">
@@ -32,7 +32,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="customer_id">Customer Id  <i class="text-danger">*</i></label>
                                             <input type="text" id="customer_id" class="form-control" value="{{ old('customer_id')}}" name="customer_id">
@@ -41,7 +41,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="asset_id">Asset Id</label>
                                             <input type="text" id="asset_id" class="form-control" value="{{ old('asset_id')}}" name="asset_id">
@@ -50,7 +50,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="product_id">Product Id</label>
                                             <input type="text" id="product_id" class="form-control" value="{{ old('product_id')}}" name="product_id">
@@ -59,7 +59,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="startdate">Start date</label>
                                             <input type="date" id="startdate" class="form-control" value="{{ old('startdate')}}" name="startdate">
@@ -68,7 +68,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="finishdate">Finish date</label>
                                             <input type="date" id="finishdate" class="form-control" value="{{ old('finishdate')}}" name="finishdate">
@@ -77,7 +77,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="starttime">Start Time</label>
                                             <input type="time" id="starttime" class="form-control" value="{{ old('starttime')}}" name="starttime">
@@ -86,7 +86,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="finishtime">Finish Time</label>
                                             <input type="time" id="finishtime" class="form-control" value="{{ old('finishtime')}}" name="finishtime">
@@ -95,7 +95,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="totalweight">Total Weight</label>
                                             <input type="text" id="totalweight" class="form-control" value="{{ old('totalweight')}}" name="totalweight">
@@ -104,7 +104,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="totaldistance">Total distance</label>
                                             <input type="text" id="totaldistance" class="form-control" value="{{ old('totaldistance')}}" name="totaldistance">
@@ -113,7 +113,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="chargetype">Charge Type</label>
                                             <input type="text" id="chargetype" class="form-control" value="{{ old('chargetype')}}" name="chargetype">
@@ -122,7 +122,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="amount">Amount</label>
                                             <input type="text" id="amount" class="form-control" value="{{ old('amount')}}" name="amount">
@@ -136,7 +136,7 @@
                                 </div>
                                 
                                 <div class="row">
-                                    <div class="col-12 d-flex justify-content-end">
+                                    <div class="col-xs-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
                                         
                                     </div>

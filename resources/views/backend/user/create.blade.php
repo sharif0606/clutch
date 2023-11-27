@@ -6,14 +6,14 @@
   <!-- // Basic multiple Column Form section start -->
     <section id="multiple-column-form">
         <div class="row match-height">
-            <div class="col-12">
+            <div class="col-xs-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form" method="post" enctype="multipart/form-data" action="{{route('user.store')}}">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="roleId">Role  <i class="text-danger">*</i></label>
                                             <select class="form-control" name="roleId" id="roleId">
@@ -29,7 +29,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="userName_en">Name (English) <i class="text-danger">*</i></label>
                                             <input type="text" id="userName_en" class="form-control" value="{{ old('userName_en')}}" name="userName_en">
@@ -38,7 +38,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="userName_bn">Name (Bangla)</label>
                                             <input type="text" id="userName_bn" class="form-control" value="{{ old('userName_bn')}}" name="userName_bn">
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                 
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="EmailAddress">Email <i class="text-danger">*</i></label>
                                             <input type="text" id="EmailAddress" class="form-control" value="{{ old('EmailAddress')}}" name="EmailAddress">
@@ -57,7 +57,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="contactNumber_en">Contact Number (English) <i class="text-danger">*</i></label>
                                             <input type="text" id="contactNumber_en" class="form-control" value="{{ old('contactNumber_en')}}" name="contactNumber_en">
@@ -66,7 +66,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="contactNumber_bn">Contact Number (Bangla)</label>
                                             <input type="text" id="contactNumber_bn" class="form-control" value="{{ old('contactNumber_bn')}}" name="contactNumber_bn">
@@ -75,7 +75,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="status">Status</label>
                                             <select id="status" class="form-control" name="status">
@@ -87,7 +87,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="fullAccess">Full Access</label>
                                             <select id="fullAccess" class="form-control" name="fullAccess">
@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="row">  
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="password">Password <i class="text-danger">*</i></label>
                                             <input type="password" id="password" class="form-control" name="password">
@@ -110,7 +110,7 @@
                                                 @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="image">Image</label>
                                             <input type="file" id="image" class="form-control" placeholder="Image" name="image">
@@ -118,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 d-flex justify-content-end">
+                                    <div class="col-xs-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
                                         
                                     </div>

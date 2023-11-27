@@ -16,7 +16,7 @@
 }
 </style>
 <div class="row">
-    <div class="col-12">
+    <div class="col-xs-12">
         <div class="card">
             <h4>{{$role->type}}</h4>
             @php 
@@ -64,7 +64,7 @@
                 @endforelse
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-xs-12">
                         <button type="submit" class="btn btn-primary"> Save</button>
                     </div>
                 </div>

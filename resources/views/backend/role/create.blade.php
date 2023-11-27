@@ -6,14 +6,14 @@
 @section('content')
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-xs-12">
         <div class="card">
             <div class="card-content">
                 <div class="card-body">
                     <form class="form" method="post" enctype="multipart/form-data" action="{{route('role.store')}}">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="Identity">Identity (only Alpha Character)<i class="text-danger">*</i></label>
                                     <input type="text" id="Identity" pattern="[A-Za-z]+" class="form-control" value="{{ old('Identity')}}" name="Identity">
@@ -22,7 +22,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-6 col-xs-12">
                                 <div class="form-group">
                                     <label for="Name">Name</label>
                                     <input type="text" id="Name" class="form-control" value="{{ old('Name')}}" name="Name">
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 d-flex justify-content-end">
+                            <div class="col-xs-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
                                 
                             </div>
