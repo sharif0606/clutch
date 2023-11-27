@@ -6,9 +6,8 @@
 <!-- Bordered table start -->
 <section class="section">
     <div class="row" id="table-bordered">
-        <div class="col-12">
+        <div class="col-xs-12">
             <div class="card">
-                
                 <!-- table bordered -->
                 <div class="table-responsive"><div>
                     <a class="pull-right fs-1" href="{{route('customers.create')}}"><i class="fa fa-plus btn btn-primary"></i></a>
@@ -39,7 +38,7 @@
                                 <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                 <td class="white-space-nowrap">
                                     <a href="{{route('customers.edit',encryptor('encrypt',$p->id))}}">
-                                        <i class="fa fa-edit btn btn-primary"></i>
+                                        <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="fa fa-trash"></i>

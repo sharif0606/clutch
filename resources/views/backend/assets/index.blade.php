@@ -35,7 +35,7 @@
                                 <td>{{$p->name}}</td>
                                 <td>{{$p->registrationnumber}}</td>
                                 <td>{{$p->driver_id}}</td>
-                                <td>{{$p->registrationcard}}</td>
+                                <td><img width="50px" src="{{asset('public/uploads/asset/'.$p->registrationcard)}}" alt=""></td>
                                 <td>{{$p->gml}}</td>
                                 <td>{{$p->cml}}</td>
                                 <td>{{$p->hml}}</td>
@@ -43,7 +43,7 @@
                                 <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                 <td class="white-space-nowrap">
                                     <a href="{{route('assets.edit',encryptor('encrypt',$p->id))}}">
-                                        <i class="fa fa-edit btn btn-primary"></i>
+                                        <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="fa fa-trash"></i>

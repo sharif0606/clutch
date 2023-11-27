@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('contactperson',255)->nullable();
             $table->string('contactnumber',255)->nullable();
             $table->text('address')->nullable();
-            $table->string('logo',255)->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

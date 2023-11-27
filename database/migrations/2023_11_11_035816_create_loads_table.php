@@ -16,16 +16,16 @@ return new class extends Migration
             $table->integer('contract_id');
             $table->integer('driver_id');
             $table->integer('customer_id');
-            $table->string('asset_id',255)->enum('weight','distance','fixed');
+            $table->string('asset_id',255);
             $table->integer('product_id');
             $table->date('startdate')->nullable();
             $table->date('finishdate')->nullable();
             $table->time('starttime')->nullable();
             $table->time('finishtime')->nullable();
-            $table->decimal('totalweight(10,2)')->nullable();
-            $table->decimal('totaldistance(10,2)')->nullable();
+            $table->decimal('totalweight')->nullable();
+            $table->decimal('totaldistance')->nullable();
             $table->string('chargetype',255)->enum('weight','distance','fixed');
-            $table->decimal('amount(10,2)')->default();
+            $table->decimal('amount')->default(0);
             $table->timestamps();
         });
     }

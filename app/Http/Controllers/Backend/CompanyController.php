@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Customer;
+use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Toastr;
 
-class CustomerController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data=Customer::paginate(10);
-        return view('backend.customers.index',compact('data'));
+        $data=Company::paginate(10);
+        return view('backend.companies.index',compact('data'));
     }
 
     /**
@@ -22,7 +23,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-         return view('backend.customers.create');
+        return view('backend.companies.create');
     }
 
     /**
@@ -30,28 +31,34 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-       try{
-            $data=new Customer();
+         try{
+            $data=new Company();
             $data->name=$request->name;
             $data->contactperson=$request->contactperson;
             $data->contactnumber=$request->contactnumber;
-            $data->email=$request->email;
             $data->address=$request->address;
 
+            if($request->hasFile('logo')){
+                $imageName = rand(111,999).time().'.'.$request->logo->extension();
+                $request->logo->move(public_path('uploads/users'), $imageName);
+                $data->logo=$imageName;
+            }
+            $data->created_by=currentUserId();
             if($data->save()){
                 Toastr::success('Successfully saved');
-                return redirect()->route('customers.index');
+                return redirect()->route('companies.index');
             }
         }catch(Exception $p){
             //dd($e);
             return redirect()->back()->withInput()->with('error','Please try again');
         }
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Customer $customer)
+    public function show(Company $company)
     {
         //
     }
@@ -61,8 +68,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer=Customer::findOrFail(encryptor('decrypt',$id));
-        return view('backend.customers.edit',compact('customer'));
+        $company=Company::findOrFail(encryptor('decrypt',$id));
+        return view('backend.companies.edit',compact('company'));
     }
 
     /**
@@ -71,17 +78,20 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         try{
-            $data=Customer::findOrFail(encryptor('decrypt',$id));
+            $data=Company::findOrFail(encryptor('decrypt',$id));
             $data->name=$request->name;
             $data->contactperson=$request->contactperson;
             $data->contactnumber=$request->contactnumber;
-            $data->email=$request->email;
             $data->address=$request->address;
-            
-          
+            if($request->hasFile('logo')){
+                $imageName = rand(111,999).time().'.'.$request->logo->extension();
+                $request->logo->move(public_path('uploads/users'), $imageName);
+                $data->logo=$imageName;
+            }
+            $data->Updated_by=currentUserId();
             if($data->save()){
                 Toastr::success('Successfully saved');
-                return redirect()->route('customers.index');
+                return redirect()->route('companies.index');
             }
         }catch(Exception $p){
             //dd($e);
@@ -94,8 +104,8 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        $customer=Customer::findOrFail(encryptor('decrypt',$id));
-        if($customer->delete())
+        $company=Company::findOrFail(encryptor('decrypt',$id));
+        if($company->delete())
             Toastr::warning('Deleted Permanently!');
             return redirect()->back();
     }

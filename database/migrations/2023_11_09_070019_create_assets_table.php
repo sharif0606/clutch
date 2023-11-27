@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('registrationnumber',255);
             $table->integer('driver_id');
             $table->string('registrationcard',255)->nullable();
-            $table->decimal('gml(10,2)')->default();
-            $table->decimal('cml(10,2)')->default();
-            $table->decimal('hml(10,2)')->default();
+            $table->decimal('gml')->default(0);
+            $table->decimal('cml')->default(0);
+            $table->decimal('hml')->default(0);
             $table->timestamps();
         });
     }

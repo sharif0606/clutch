@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Company;
+use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Toastr;
 
-class CompanyController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data=Company::paginate(10);
-        return view('backend.companies.index',compact('data'));
+        $data=Customer::paginate(10);
+        return view('backend.customers.index',compact('data'));
     }
 
     /**
@@ -22,7 +23,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('backend.companies.create');
+         return view('backend.customers.create');
     }
 
     /**
@@ -30,34 +31,28 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-         try{
-            $data=new Company();
+       try{
+            $data=new Customer();
             $data->name=$request->name;
             $data->contactperson=$request->contactperson;
             $data->contactnumber=$request->contactnumber;
+            $data->email=$request->email;
             $data->address=$request->address;
 
-            if($request->hasFile('logo')){
-                $imageName = rand(111,999).time().'.'.$request->logo->extension();
-                $request->logo->move(public_path('uploads/users'), $imageName);
-                $data->logo=$imageName;
-            }
-            $data->created_by=currentUserId();
             if($data->save()){
                 Toastr::success('Successfully saved');
-                return redirect()->route('companies.index');
+                return redirect()->route('customers.index');
             }
         }catch(Exception $p){
             //dd($e);
             return redirect()->back()->withInput()->with('error','Please try again');
         }
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Company $company)
+    public function show(Customer $customer)
     {
         //
     }
@@ -67,8 +62,8 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $company=Company::findOrFail(encryptor('decrypt',$id));
-        return view('backend.companies.edit',compact('company'));
+        $customer=Customer::findOrFail(encryptor('decrypt',$id));
+        return view('backend.customers.edit',compact('customer'));
     }
 
     /**
@@ -77,20 +72,17 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
         try{
-            $data=Company::findOrFail(encryptor('decrypt',$id));
+            $data=Customer::findOrFail(encryptor('decrypt',$id));
             $data->name=$request->name;
             $data->contactperson=$request->contactperson;
             $data->contactnumber=$request->contactnumber;
+            $data->email=$request->email;
             $data->address=$request->address;
-            if($request->hasFile('logo')){
-                $imageName = rand(111,999).time().'.'.$request->logo->extension();
-                $request->logo->move(public_path('uploads/users'), $imageName);
-                $data->logo=$imageName;
-            }
-            $data->Updated_by=currentUserId();
+            
+          
             if($data->save()){
                 Toastr::success('Successfully saved');
-                return redirect()->route('companies.index');
+                return redirect()->route('customers.index');
             }
         }catch(Exception $p){
             //dd($e);
@@ -103,8 +95,8 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $company=Company::findOrFail(encryptor('decrypt',$id));
-        if($company->delete())
+        $customer=Customer::findOrFail(encryptor('decrypt',$id));
+        if($customer->delete())
             Toastr::warning('Deleted Permanently!');
             return redirect()->back();
     }

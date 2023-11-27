@@ -21,8 +21,6 @@
                                 <th scope="col">{{__('ContactPerson')}}</th>
                                 <th scope="col">{{__('ContactNumber')}}</th>
                                 <th scope="col">{{__('Address')}}</th>
-                                <th scope="col">{{__('Logo')}}</th>
-                            
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
                         </thead>
@@ -34,12 +32,10 @@
                                 <td>{{$p->contactperson}}</td>
                                 <td>{{$p->contactnumber}}</td>
                                 <td>{{$p->address}}</td>
-                                <td><img width="50px" src="{{asset('public/uploads/users/'.$p->logo)}}" alt=""></td>
-                                
                                 <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                 <td class="white-space-nowrap">
                                     <a href="{{route('branch.edit',encryptor('encrypt',$p->id))}}">
-                                        <i class="fa fa-edit btn btn-primary"></i>
+                                        <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="fa fa-trash"></i>

@@ -51,8 +51,6 @@
                                                     </small>
                                                 @endif
                                             </div>
-                                            
-                                            @php print_r($errors->all()) @endphp
 
                                             <div class="form-group text-center">
                                                 <button type="submit" class="btn btn-primary  btn-rounded">sign in</button>
@@ -63,11 +61,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /Row -->   
+                </div><!-- /Row -->   
             </div>
-            
-        </div>
-        <!-- /Main Content -->
+        </div><!-- /Main Content -->
     </div>
 @endsection

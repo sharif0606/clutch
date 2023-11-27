@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Branch;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Toastr;
 
@@ -14,7 +16,7 @@ class BranchController extends Controller
     public function index()
     {
         $data=Branch::paginate(10);
-        return view('branch.index',compact('data'));
+        return view('backend.branch.index',compact('data'));
     }
 
     /**
@@ -22,7 +24,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('branch.create');
+        $company=Company::get();
+        return view('backend.branch.create',compact('company'));
     }
 
     /**
@@ -32,17 +35,11 @@ class BranchController extends Controller
     {
         try{
             $data=new Branch();
-            $data->company_id=1;
+            $data->company_id=$request->company_id;
             $data->name=$request->Name;
             $data->contactperson=$request->ContactPerson;
             $data->contactnumber=$request->ContactNumber;
             $data->address=$request->address;
-
-            if($request->hasFile('logo')){
-                $imageName = rand(111,999).time().'.'.$request->logo->extension();
-                $request->logo->move(public_path('uploads/users'), $imageName);
-                $data->logo=$imageName;
-            }
             $data->created_by=currentUserId();
             if($data->save()){
                 Toastr::success('Successfully saved');
@@ -68,8 +65,9 @@ class BranchController extends Controller
      */
     public function edit( $id)
     {
+        $company=Company::get();
         $branch=Branch::findOrFail(encryptor('decrypt',$id));
-        return view('branch.edit',compact('branch'));
+        return view('backend.branch.edit',compact('branch','company'));
     }
 
     /**
@@ -79,15 +77,10 @@ class BranchController extends Controller
     {
         try{
             $data=Branch::findOrFail(encryptor('decrypt',$id));
-            $data->name=$request->Name;
+            $data->company_id=$request->company_id;
             $data->contactperson=$request->ContactPerson;
             $data->contactnumber=$request->contactNumber;
             $data->address=$request->address;
-            if($request->hasFile('logo')){
-                $imageName = rand(111,999).time().'.'.$request->logo->extension();
-                $request->logo->move(public_path('uploads/users'), $imageName);
-                $data->logo=$imageName;
-            }
             $data->Updated_by=currentUserId();
             if($data->save()){
                 Toastr::success('Successfully saved');
