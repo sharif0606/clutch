@@ -17,20 +17,28 @@
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="contract_id">Contract Id<i class="text-danger">*</i></label>
-                                            <input type="text" id="contract_id" class="form-control" value="{{ old('contract_id')}}" name="contract_id">
-                                            @if($errors->has('contract_id'))
-                                                <span class="text-danger"> {{ $errors->first('contract_id') }}</span>
-                                            @endif
+                                                <select name="contract_id" class="form-control" id="contract_id" >
+                                                    <option value="">Select Contract</option>
+                                                        @forelse($user as $u)
+                                                            <option value="{{$u->id}}" @if(old('contract_id')==$u->id) selected @endif>{{$u->name_en}}</option>
+                                                        @empty
+                                                            <option value="">No Contract Found</option>
+                                                        @endforelse
+                                                </select>
                                         </div>
                                     </div>
                                 
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="driver_id">Driver Id <i class="text-danger">*</i></label>
-                                            <input type="text" id="driver_id" class="form-control" value="{{ old('driver_id')}}" name="driver_id">
-                                            @if($errors->has('driver_id'))
-                                                <span class="text-danger"> {{ $errors->first('driver_id') }}</span>
-                                            @endif
+                                            <select name="driver_id"         class="form-control" id="driver_id" >
+                                                <option value="">Select Driver</option>
+                                                    @forelse($driver as $d)
+                                                        <option value="{{$c->id}}" @if(old('driver_id')==$d->id) selected @endif>{{$c->registrationnumber}}</option>
+                                                    @empty
+                                                        <option value="">No Driver Found</option>
+                                                    @endforelse
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-12">

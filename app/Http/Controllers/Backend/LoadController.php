@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Load;
+use App\Models\Contract;
 use Illuminate\Http\Request;
 use Toastr;
 
@@ -23,7 +24,9 @@ class LoadController extends Controller
      */
     public function create()
     {
-       return view('backend.loads.create');
+        $contract = Contract::get();
+        $driver = Contract::get();
+        return view('backend.loads.create',compact('contract','driver'));
     }
 
     /**
