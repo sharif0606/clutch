@@ -12,7 +12,7 @@ use App\Http\Controllers\ProductController as product;
 use App\Http\Controllers\ContractController as contract;
 use App\Http\Controllers\Backend\LoadController as load;
 use App\Http\Controllers\ProductTypeController as productType;
-use App\Http\Controllers\UnitController as Unit;
+use App\Http\Controllers\Backend\UnitController as Unit;
 use App\Http\Controllers\Backend\DashboardController as dashboard;
 use App\Http\Controllers\Backend\PermissionController as permission;
 
