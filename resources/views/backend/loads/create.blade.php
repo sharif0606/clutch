@@ -33,22 +33,14 @@
                                             <select name="driver_id"         class="form-control" id="driver_id" >
                                                 <option value="">Select Driver</option>
                                                     @forelse($driver as $d)
-                                                        <option value="{{$c->id}}" @if(old('driver_id')==$d->id) selected @endif>{{$c->registrationnumber}}</option>
+                                                        <option value="{{$d->id}}" @if(old('driver_id')==$d->id) selected @endif>{{$d->name_en}}</option>
                                                     @empty
                                                         <option value="">No Driver Found</option>
                                                     @endforelse
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-xs-12">
-                                        <div class="form-group">
-                                            <label for="customer_id">Customer Id  <i class="text-danger">*</i></label>
-                                            <input type="text" id="customer_id" class="form-control" value="{{ old('customer_id')}}" name="customer_id">
-                                            @if($errors->has('customer_id'))
-                                                <span class="text-danger"> {{ $errors->first('customer_id') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
+                                   
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="asset_id">Asset Id</label>

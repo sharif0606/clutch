@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('contract_id');
             $table->integer('driver_id');
-            $table->integer('customer_id');
             $table->string('asset_id',255);
             $table->integer('product_id');
             $table->date('startdate')->nullable();

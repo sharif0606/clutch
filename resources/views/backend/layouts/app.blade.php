@@ -110,6 +110,36 @@
 					</a>
 				</li>
 				<li>
+					<a href="{{route('products.index')}}">
+						<div class="pull-left">
+							<i class="fab fa-product-hunt mr-20"></i>
+							<span class="right-nav-text">Product</span>
+						</div>
+						<div class="pull-right"></div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('contracts.index')}}">
+						<div class="pull-left">
+							<i class="	fas fa-taxi mr-20"></i>
+							<span class="right-nav-text">Contract</span>
+						</div>
+						<div class="pull-right"></div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li>
+					<a href="{{route('product_types.index')}}">
+						<div class="pull-left">
+							<i class="fas fa-boxes mr-20"></i>
+							<span class="right-nav-text">Product Type</span>
+						</div>
+						<div class="pull-right"></div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li>
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#setting_dr">
 						<div class="pull-left">
 							<i class="fa fa-cogs mr-20"></i>

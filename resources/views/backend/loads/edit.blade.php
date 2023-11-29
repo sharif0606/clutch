@@ -41,15 +41,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-xs-12">
-                                        <div class="form-group">
-                                            <label for="customer_id">Customer Id  <i class="text-danger">*</i></label>
-                                            <input type="text" id="customer_id" class="form-control" value="{{ old('customer_id')}}" name="customer_id">
-                                            @if($errors->has('customer_id'))
-                                                <span class="text-danger"> {{ $errors->first('customer_id') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
+                                  
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="asset_id">Asset Id</label>

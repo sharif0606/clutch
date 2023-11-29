@@ -14,6 +14,9 @@
   margin-right: 16px;
   margin-bottom: 11px;
 }
+.text-dark{
+color:#000
+}
 </style>
 <div class="row">
     <div class="col-xs-12">
@@ -47,7 +50,7 @@
                             <ul class="list-group">
                                 @foreach($r as $name)
                                     @if(in_array($name['method'],$auto_accept))
-                                    <li class="list-group-item">
+                                    <li class="list-group-item text-dark">
                                         @if(in_array($k.'.'.$name['function'],$permissions))
                                             <input type="checkbox" checked name="permission[]" value="{{$k.'.'.$name['function']}}"> {{__($name['function'])}}
                                         @else

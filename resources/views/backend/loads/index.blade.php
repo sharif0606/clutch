@@ -19,7 +19,6 @@
                                 <th scope="col">{{__('#SL')}}</th>
                                 <th scope="col">{{__('contract_id')}}</th>
                                 <th scope="col">{{__('driver_id')}}</th>
-                                <th scope="col">{{__('customer_id')}}</th>
                                 <th scope="col">{{__('asset_id')}}</th>
                                 <th scope="col">{{__('product_id')}}</th>
                                 <th scope="col">{{__('startdate')}}</th>
@@ -40,7 +39,6 @@
                                 <th scope="row">{{ ++$loop->index }}</th>
                                 <td>{{$p->contract_id}}</td>
                                 <td>{{$p->driver_id}}</td>
-                                <td>{{$p->customer_id}}</td>
                                 <td>{{$p->asset_id}}</td>
                                 <td>{{$p->product_id}}</td>
                                 <td>{{$p->startdate}}</td>
@@ -68,7 +66,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <th colspan="15" class="text-center">No Pruduct Found</th>
+                                <th colspan="14" class="text-center">No Pruduct Found</th>
                             </tr>
                             @endforelse
                         </tbody>
