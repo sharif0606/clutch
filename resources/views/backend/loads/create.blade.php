@@ -44,19 +44,27 @@
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="asset_id">Asset Id</label>
-                                            <input type="text" id="asset_id" class="form-control" value="{{ old('asset_id')}}" name="asset_id">
-                                            @if($errors->has('asset_id'))
-                                                <span class="text-danger"> {{ $errors->first('asset_id') }}</span>
-                                            @endif
+                                            <select name="asset_id"         class="form-control" id="asset_id" >
+                                                <option value="">Select Asset</option>
+                                                    @forelse($asset as $a)
+                                                        <option value="{{$a->id}}" @if(old('asset_id')==$a->id) selected @endif>{{$a->name}}</option>
+                                                    @empty
+                                                        <option value="">No Asset Found</option>
+                                                    @endforelse
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="product_id">Product Id</label>
-                                            <input type="text" id="product_id" class="form-control" value="{{ old('product_id')}}" name="product_id">
-                                            @if($errors->has('product_id'))
-                                                <span class="text-danger"> {{ $errors->first('product_id') }}</span>
-                                            @endif
+                                            <select name="product_id"         class="form-control" id="product_id" >
+                                                <option value="">Select Product</option>
+                                                    @forelse($product as $p)
+                                                        <option value="{{$p->id}}" @if(old('product_id')==$p->id) selected @endif>{{$p->name}}</option>
+                                                    @empty
+                                                        <option value="">No Product Found</option>
+                                                    @endforelse
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-12">

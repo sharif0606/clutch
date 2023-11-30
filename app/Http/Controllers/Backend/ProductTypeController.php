@@ -23,6 +23,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
+   
          return view('backend.product_types.create');
     }
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Load;
 use App\Models\User;
+use App\Models\Asset;
+use App\Models\Product;
 use App\Models\Contract;
 use Illuminate\Http\Request;
 use Toastr;
@@ -27,7 +29,9 @@ class LoadController extends Controller
     {
         $contract = Contract::get();
         $driver=User::get();
-        return view('backend.loads.create',compact('contract','driver'));
+        $asset=Asset::get();
+        $product=Product::get();
+        return view('backend.loads.create',compact('contract','driver','asset','product'));
     }
 
     /**
@@ -73,8 +77,12 @@ class LoadController extends Controller
      */
     public function edit($id)
     {
+        $contract = Contract::get();
+        $driver=User::get();
+        $asset=Asset::get();
+        $product=Product::get();
          $load=Load::findOrFail(encryptor('decrypt',$id));
-        return view('backend.loads.edit',compact('load'));
+        return view('backend.loads.edit',compact('load','contract','driver','asset','product'));
     }
 
     /**

@@ -28,19 +28,27 @@
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="product_type_id">Product type Id <i class="text-danger">*</i></label>
-                                            <input type="text" id="product_type_id" class="form-control" value="{{ old('product_type_id')}}" name="product_type_id">
-                                            @if($errors->has('product_type_id'))
-                                                <span class="text-danger"> {{ $errors->first('product_type_id') }}</span>
-                                            @endif
+                                            <select name="product_type_id"         class="form-control" id="product_type_id" >
+                                                <option value="">Product type Id</option>
+                                                    @forelse($product_type_id as $p)
+                                                        <option value="{{$p->id}}" @if(old('product_type_id')==$p->id) selected @endif>{{$p->name}}</option>
+                                                    @empty
+                                                        <option value="">No Product Found</option>
+                                                    @endforelse
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="unit_id">Unit Id <i class="text-danger">*</i></label>
-                                            <input type="text" id="unit_id" class="form-control" value="{{ old('unit_id')}}" name="unit_id">
-                                            @if($errors->has('unit_id'))
-                                                <span class="text-danger"> {{ $errors->first('unit_id') }}</span>
-                                            @endif
+                                            <select name="unit_id"         class="form-control" id="unit_id" >
+                                                <option value="">Unit Id</option>
+                                                    @forelse($unit as $p)
+                                                        <option value="{{$p->id}}" @if(old('unit_id')==$p->id) selected @endif>{{$p->name}}</option>
+                                                    @empty
+                                                        <option value="">No Unit Found</option>
+                                                    @endforelse
+                                            </select>
                                         </div>
                                     </div>
                                     

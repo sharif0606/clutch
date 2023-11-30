@@ -26,7 +26,15 @@
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="customer_id">Customer Id <i class="text-danger">*</i></label>
-                                            <input type="text" id="customer_id" class="form-control" value="{{ old('customer_id')}}" name="customer_id">
+                                            <select name="customer_id" class="form-control" id="customer_id" >
+                                                <option value="">Select Customer</option>
+                                                @forelse($product as $u)
+                                                    <option value="{{$u->id}}" @if(old('customer_id')==$u->id) selected @endif>{{$u->name}}</option>
+                                                @empty
+                                                    <option value="">No Customer Found</option>
+                                                @endforelse
+                                            </select>
+                                            
                                             @if($errors->has('customer_id'))
                                                 <span class="text-danger"> {{ $errors->first('customer_id') }}</span>
                                             @endif
@@ -35,7 +43,15 @@
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="product_id">Product Id  <i class="text-danger">*</i></label>
-                                            <input type="text" id="product_id" class="form-control" value="{{ old('product_id')}}" name="product_id">
+                                            <select name="product_id" class="form-control" id="product_id" >
+                                                <option value="">Select Product</option>
+                                                @forelse($product as $u)
+                                                    <option value="{{$u->id}}" @if(old('product_id')==$u->id) selected @endif>{{$u->name}}</option>
+                                                @empty
+                                                    <option value="">No Product Found</option>
+                                                @endforelse
+                                            </select>
+                                            
                                             @if($errors->has('product_id'))
                                                 <span class="text-danger"> {{ $errors->first('product_id') }}</span>
                                             @endif
@@ -44,7 +60,12 @@
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="chargetype">Charge Type</label>
-                                            <input type="text" id="chargetype" class="form-control" value="{{ old('chargetype')}}" name="chargetype">
+                                            <select name="chargetype" class="form-control" id="chargetype" >
+                                                <option value="">Select Type</option>
+                                                <option value="1">Weight</option>
+                                                <option value="2">Kilometer</option>
+                                                <option value="3">Fixed</option>
+                                            </select>
                                             @if($errors->has('chargetype'))
                                                 <span class="text-danger"> {{ $errors->first('chargetype') }}</span>
                                             @endif

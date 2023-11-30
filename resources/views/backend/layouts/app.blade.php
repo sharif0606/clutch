@@ -34,7 +34,7 @@
 				<div class="nav-header pull-left">
 					<div class="logo-wrap">
 						<a href="index.html">
-							<img class="brand-img" src="../img/logo.png" alt="brand"/>
+							<img class="public/logo.png" src="logo" alt="brand"/>
 							<span class="brand-text">Grandin</span>
 						</a>
 					</div>
@@ -140,6 +140,16 @@
 					</a>
 				</li>
 				<li>
+					<a href="{{route('loads.index')}}">
+						<div class="pull-left">
+							<i class="fas fa-truck-loading mr-20"></i>
+							<span class="right-nav-text">Load</span>
+						</div>
+						<div class="pull-right"></div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li>
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#setting_dr">
 						<div class="pull-left">
 							<i class="fa fa-cogs mr-20"></i>
@@ -161,6 +171,9 @@
 							<a href="{{route('user.index')}}">User</a>
 						</li>
 						<li>
+							<a href="{{route('units.index')}}">Unit</a>
+						</li>
+						<li>
 							<a href="{{route('role.index')}}">Role</a>
 						</li>
 					</ul>
@@ -178,7 +191,7 @@
 			<footer class="footer container-fluid pl-30 pr-30">
 				<div class="row">
 					<div class="col-sm-12">
-						<p>2018 &copy; Round-54. </p>
+						<p>2023 &copy; Round-54. </p>
 					</div>
 				</div>
 			</footer>

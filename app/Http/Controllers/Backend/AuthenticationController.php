@@ -70,6 +70,7 @@ class AuthenticationController extends Controller
                 'role'=>encryptor('encrypt',$user->role->type),
                 'roleIdentity'=>encryptor('encrypt',$user->role->identity),
                 'language'=>encryptor('encrypt',$user->language),
+                'company_id'=>encryptor('encrypt',$user->company_id),
                 'image'=>$user->image ?? 'no-image.png'
             ]
         );

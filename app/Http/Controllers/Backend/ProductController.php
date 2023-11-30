@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductType;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Toastr;
 
@@ -23,7 +25,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-       return view('backend.products.create');
+        $product_type_id=ProductType::get();
+        $unit=Unit::get();
+       return view('backend.products.create',compact('product_type_id','unit'));
     }
 
     /**
@@ -60,8 +64,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $product_type_id=ProductType::get();
+        $unit=Unit::get();
         $product=Product::findOrFail(encryptor('decrypt',$id));
-        return view('backend.products.edit',compact('product'));
+        return view('backend.products.edit',compact('product','product_type_id','unit'));
     }
 
     /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contract;
+use App\Models\Product;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Toastr;
 
@@ -23,7 +25,9 @@ class ContractController extends Controller
      */
     public function create()
     {
-        return view('backend.contracts.create');
+        $product=Product::get();
+        $customer=Customer::get();
+        return view('backend.contracts.create',compact('product','customer'));
     }
 
     /**
@@ -44,6 +48,7 @@ class ContractController extends Controller
             $data->deliveredto=$request->deliveredto;
             $data->totalweight=$request->totalweight;
             $data->totaldistance=$request->totaldistance;
+            $data->company_id=companyId();
 
             if($data->save()){
                 Toastr::success('Successfully saved');

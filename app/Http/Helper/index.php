@@ -37,4 +37,7 @@ function fullAccess(){
 function currentUser(){
     return encryptor('decrypt', request()->session()->get('roleIdentity'));
 }
+function companyId(){
+    return encryptor('decrypt', request()->session()->get('company_id'));
+}
 
