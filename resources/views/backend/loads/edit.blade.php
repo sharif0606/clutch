@@ -20,7 +20,7 @@
                                                 <select name="contract_id" class="form-control" id="contract_id" >
                                                     <option value="">Select Contract</option>
                                                         @forelse($driver as $u)
-                                                            <option value="{{$u->id}}" @if(old('contract_id')==$u->id) selected @endif>{{$u->name_en}}</option>
+                                                            <option value="{{$u->id}}" @if(old('contract_id',$load->contract_id)==$u->id) selected @endif>{{$u->name_en}}</option>
                                                         @empty
                                                             <option value="">No Contract Found</option>
                                                         @endforelse
@@ -34,7 +34,7 @@
                                             <select name="driver_id"         class="form-control" id="driver_id" >
                                                 <option value="">Select Driver</option>
                                                     @forelse($driver as $d)
-                                                        <option value="{{$d->id}}" @if(old('driver_id')==$d->id) selected @endif>{{$d->registrationnumber}}</option>
+                                                        <option value="{{$d->id}}" @if(old('driver_id',$load->driver_id)==$d->id) selected @endif>{{$d->name_en}}</option>
                                                     @empty
                                                         <option value="">No Driver Found</option>
                                                     @endforelse
@@ -48,7 +48,7 @@
                                             <select name="asset_id"         class="form-control" id="asset_id" >
                                                 <option value="">Select Asset</option>
                                                     @forelse($asset as $a)
-                                                        <option value="{{$a->id}}" @if(old('asset_id')==$a->id) selected @endif>{{$a->name}}</option>
+                                                        <option value="{{$a->id}}" @if(old('asset_id',$load->asset_id)==$a->id) selected @endif>{{$a->name}}</option>
                                                     @empty
                                                         <option value="">No Asset Found</option>
                                                     @endforelse
@@ -61,7 +61,7 @@
                                             <select name="product_id"         class="form-control" id="product_id" >
                                                 <option value="">Select Product</option>
                                                     @forelse($product as $p)
-                                                        <option value="{{$p->id}}" @if(old('product_id')==$p->id) selected @endif>{{$p->name}}</option>
+                                                        <option value="{{$p->id}}" @if(old('product_id',$load->product_id)==$p->id) selected @endif>{{$p->name}}</option>
                                                     @empty
                                                         <option value="">No Product Found</option>
                                                     @endforelse
