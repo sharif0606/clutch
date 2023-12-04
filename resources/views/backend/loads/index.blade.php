@@ -36,7 +36,7 @@
                         <tbody>
                             @forelse($data as $p)
                             <tr>
-                                <th scope="row">{{ ++$loop->index }}</th>
+                                <th scope="row">{{ $p->id }}</th>
                                 <td>{{$p->contract_id}}</td>
                                 <td>{{$p->driver_id}}</td>
                                 <td>{{$p->asset_id}}</td>
@@ -75,5 +75,6 @@
             </div>
         </div>
     </div>
+    {{$data->links()}}
 </section>
 @endsection

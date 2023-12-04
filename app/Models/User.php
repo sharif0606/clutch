@@ -9,7 +9,14 @@ class User extends Model
 {
     use HasFactory;
     
-    public function role(){
+    public function roles(){
         return $this->belongsTo(Role::class);
+    }
+
+    public function loads(){
+        return $this->hasMany(Load::class);
+    }
+    public function assets(){
+        return $this->hasMany(Asset::class);
     }
 }

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Branch extends Model
 {
     use HasFactory;
+
+    public function companie(){
+        return $this->belongsTo(Company::class);
+    }
 }
