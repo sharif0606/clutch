@@ -32,11 +32,11 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="mobile-only-brand pull-left">
 				<div class="nav-header pull-left">
-					<div class="logo-wrap">
-						<a href="index.html">
-							<img class="public/logo.png" src="logo" alt="brand"/>
-							<span class="brand-text">Grandin</span>
-						</a>
+					<div class="logo-wrap d-flex">
+					
+							<img height="30px" weight="40px" class="mt-5 me-2" src="{{asset('public/logo.png')}}" alt="brand"/>
+							<span class="brand-text">Logistics</span>
+						
 					</div>
 				</div>	
 				<a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="zmdi zmdi-menu"></i></a>
