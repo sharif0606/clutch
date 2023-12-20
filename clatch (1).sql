@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2023 at 04:41 AM
+-- Generation Time: Dec 20, 2023 at 07:27 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -174,6 +174,23 @@ INSERT INTO `customers` (`id`, `name`, `contactperson`, `contactnumber`, `email`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `driver_payrolls`
+--
+
+CREATE TABLE `driver_payrolls` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `driver_id` varchar(255) NOT NULL,
+  `month` varchar(255) NOT NULL,
+  `year` year(4) NOT NULL,
+  `number_of_load` varchar(255) NOT NULL,
+  `total_amount` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `loads`
 --
 
@@ -253,7 +270,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2023_11_11_032107_create_contracts_table', 1),
 (11, '2023_11_11_035816_create_loads_table', 1),
 (12, '2023_11_11_043945_create_users_table', 1),
-(13, '2023_11_12_043129_create_permissions_table', 1);
+(13, '2023_11_12_043129_create_permissions_table', 1),
+(14, '2023_12_20_044503_create_driver_payrolls_table', 2);
 
 -- --------------------------------------------------------
 
@@ -597,6 +615,12 @@ ALTER TABLE `customers`
   ADD UNIQUE KEY `customers_email_unique` (`email`);
 
 --
+-- Indexes for table `driver_payrolls`
+--
+ALTER TABLE `driver_payrolls`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `loads`
 --
 ALTER TABLE `loads`
@@ -694,6 +718,12 @@ ALTER TABLE `customers`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `driver_payrolls`
+--
+ALTER TABLE `driver_payrolls`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `loads`
 --
 ALTER TABLE `loads`
@@ -703,7 +733,7 @@ ALTER TABLE `loads`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `permissions`
