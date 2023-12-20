@@ -140,6 +140,16 @@
 					</a>
 				</li>
 				<li>
+					<a href="{{route('driver_payroll.index')}}">
+						<div class="pull-left">
+							<i class="fas fa-boxes mr-20"></i>
+							<span class="right-nav-text">Driver Payroll</span>
+						</div>
+						<div class="pull-right"></div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li>
 					<a href="{{route('loads.index')}}">
 						<div class="pull-left">
 							<i class="fas fa-truck-loading mr-20"></i>

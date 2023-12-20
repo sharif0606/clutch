@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\ProductTypeController as productType;
 use App\Http\Controllers\Backend\UnitController as Unit;
 use App\Http\Controllers\Backend\DashboardController as dashboard;
 use App\Http\Controllers\Backend\PermissionController as permission;
+use App\Http\Controllers\Backend\DriverPayrollController as driverpayroll;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('contracts', contract::class);
     Route::resource('loads', load::class);
     Route::resource('product_types', productType::class);
+    Route::resource('driver_payroll', driverpayroll::class);
     Route::resource('units', Unit::class);
     Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');
     Route::post('permission/{role}', [permission::class,'save'])->name('permission.save');
