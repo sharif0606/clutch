@@ -142,7 +142,7 @@
 				<li>
 					<a href="{{route('driver_payroll.index')}}">
 						<div class="pull-left">
-							<i class="fas fa-boxes mr-20"></i>
+							<i class="	fa fa-cc-visa mr-20"></i>
 							<span class="right-nav-text">Driver Payroll</span>
 						</div>
 						<div class="pull-right"></div>
