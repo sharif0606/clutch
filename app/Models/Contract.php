@@ -10,13 +10,13 @@ class Contract extends Model
     use HasFactory;
 
     public function loads(){
-        return $this->hasMany(Load::class);
+        return $this->hasMany(Load::class,'contract_id');
     }
 
     public function customers(){
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class,'customer_id');
     }
     public function products(){
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class,'product_id');
     }
 }

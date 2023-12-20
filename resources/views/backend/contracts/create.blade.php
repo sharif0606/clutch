@@ -64,7 +64,6 @@
                                                 <option value="">Select Type</option>
                                                 <option value="1">Weight</option>
                                                 <option value="2">Kilometer</option>
-                                                <option value="3">Fixed</option>
                                             </select>
                                             @if($errors->has('chargetype'))
                                                 <span class="text-danger"> {{ $errors->first('chargetype') }}</span>

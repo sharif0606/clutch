@@ -19,7 +19,7 @@
                                 <th scope="col">{{__('#SL')}}</th>
                                 <th scope="col">{{__('Name')}}</th>
                                 <th scope="col">{{__('Registration Number')}}</th>
-                                <th scope="col">{{__('Driver Id')}}</th>
+                                <th scope="col">{{__('Driver')}}</th>
                                 <th scope="col">{{__('Registration Card')}}</th>
                                 <th scope="col">{{__('General Mass Limits (GML)')}}</th>
                                 <th scope="col">{{__('Concessional Mass Limits (CML)')}}</th>
@@ -34,7 +34,7 @@
                                 <th scope="row">{{ ++$loop->index }}</th>
                                 <td>{{$p->name}}</td>
                                 <td>{{$p->registrationnumber}}</td>
-                                <td>{{$p->driver_id}}</td>
+                                <td>{{$p->drivers?->name_en}}</td>
                                 <td><img width="50px" src="{{asset('public/uploads/asset/'.$p->registrationcard)}}" alt=""></td>
                                 <td>{{$p->gml}}</td>
                                 <td>{{$p->cml}}</td>

@@ -14,6 +14,6 @@ class Asset extends Model
     }
 
     public function drivers(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'driver_id');
     }
 }

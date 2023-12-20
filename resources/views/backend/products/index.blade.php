@@ -28,8 +28,8 @@
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
                                 <td>{{$p->name}}</td>
-                                <td>{{$p->product_type_id}}</td>
-                                <td>{{$p->unit_id}}</td>
+                                <td>{{$p->type?->name}}</td>
+                                <td>{{$p->units?->name}}</td>
                                 
                                 <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                 <td class="white-space-nowrap">

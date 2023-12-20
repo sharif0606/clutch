@@ -33,13 +33,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $chargetype=array('','Weight','Kilometer','Fixed');
+                            @endphp
                             @forelse($data as $p)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
                                 <td>{{$p->contractnumber}}</td>
-                                <td>{{$p->customer_id}}</td>
-                                <td>{{$p->product_id}}</td>
-                                <td>{{$p->chargetype}}</td>
+                                <td>{{$p->customers?->name}}</td>
+                                <td>{{$p->products?->name}}</td>
+                                <td>{{$chargetype[$p->chargetype]}}</td>
                                 <td>{{$p->amount}}</td>
                                 <td>{{$p->startdate}}</td>
                                 <td>{{$p->finishdate}}</td>
