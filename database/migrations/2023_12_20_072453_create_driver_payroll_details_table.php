@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('driver_payrolls', function (Blueprint $table) {
+        Schema::create('driver_payroll_details', function (Blueprint $table) {
             $table->id();
-            $table->string('driver_id');
-            $table->string('month');
-            $table->year('year');
-            $table->string('number_of_load');
-            $table->decimal('total_amount',10,2);
+            $table->integer('driver_payroll_id');
+            $table->integer('load_id');
+            $table->decimal('amount',10,2);
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('driver_payrolls');
+        Schema::dropIfExists('driver_payroll_details');
     }
 };

@@ -37,6 +37,7 @@ Route::get('/logout', [auth::class,'signOut'])->name('logOut');
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::get('get_load', [driverpayroll::class,'get_load'])->name('get_load');
 });
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('user', user::class);

@@ -18,7 +18,7 @@
                             <tr>
                                 <th scope="col">{{__('#SL')}}</th>
                                 
-                                <th scope="col">{{__('driver_id')}}</th>
+                                <th scope="col">{{__('Driver')}}</th>
                                 <th scope="col">{{__('month')}}</th>
                                 <th scope="col">{{__('year')}}</th>
                                 <th scope="col">{{__('number_of_load')}}</th>
@@ -32,8 +32,11 @@
                             @forelse($data as $p)
                             <tr>
                                 <th scope="row">{{ $p->id }}</th>
-                                <td>{{$p->driver_id}}</td>
-                                <td>{{$p->month}}</td>
+                                <td>
+                                    {{$p->driver?->name_en}}
+                                    {{$p->driver?->contact_no_en}}
+                                </td>
+                                <td>{{date('F', strtotime('2020-'.$p->month.'-01'))}}</td>
                                 <td>{{$p->year}}</td>
                                 <td>{{$p->number_of_load}}</td>
                                 <td>{{$p->total_amount}}</td>
