@@ -60,6 +60,12 @@ class DriverPayrollController extends Controller
                         </td>
                         <td>".$totalamt."</td>
                     </tr>";
+        }else{
+            $datas.="<tr>
+                        <td colspan='6'>
+                            No load found
+                        </td>
+                    </tr>";
         }
         echo json_encode($datas);
     }
