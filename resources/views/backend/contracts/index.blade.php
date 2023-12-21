@@ -34,7 +34,7 @@
                         </thead>
                         <tbody>
                             @php
-                                $chargetype=array('','Weight','Kilometer','Fixed');
+                                $chargetype=array('','Weight','Kilometer');
                             @endphp
                             @forelse($data as $p)
                             <tr>
