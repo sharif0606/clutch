@@ -32,10 +32,12 @@ class DriverPayrollController extends Controller
         $startdate=$r->p_year.'-'.$r->p_month.'-01';
         $enddate=$r->p_year.'-'.$r->p_month.'-31';
         $loads = Load::where('driver_id',$r->driver)
-        ->whereBetween('startdate',[$startdate,$enddate])->get();
+        ->whereBetween('startdate',[$startdate,$enddate]);
         $datas="";
         $totalamt=0;
-        if($loads){
+        if($loads->count() > 0){
+            $loads =$loads->get();
+            $i=0;
             foreach($loads as $i=>$l){
                 $amt=($l->amount*0.20);
                 $totalamt+=$amt;
