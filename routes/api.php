@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('driver_login',[apictrl::class,'signInCheck']);
 Route::get('loads/{uid}',[apictrl::class,'orders']);
+Route::get('single_load/{load_id}',[apictrl::class,'single_load']);
+Route::post('save_load',[apictrl::class,'save_load']);

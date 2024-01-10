@@ -24,6 +24,7 @@ return new class extends Migration
             $table->decimal('totalweight')->nullable();
             $table->decimal('totaldistance')->nullable();
             $table->string('chargetype',255)->enum('weight','distance','fixed');
+            $table->integer('status')->default(0)->comment('Pending, Picked Up,Delivered');
             $table->decimal('amount')->default(0);
             $table->timestamps();
         });

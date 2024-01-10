@@ -46,11 +46,45 @@ class ApiController extends Controller
                     'totalweight'=>$p->totalweight,
                     'totaldistance'=>$p->totaldistance,
                     'chargetype'=>$p->chargetype,
-                    'amount'=>$p->amount
+                    'amount'=>$p->amount,
+                    'status'=>$status[$p->status]
                 );
             }
         }
         return response($data, 200);
+    }
+
+    public function single_load($id){
+        $order=Load::find($id);
+        $data=array();
+        $status=array('Pending','Picked Up','Delivered');
+        if($order){
+            $data=array(
+                'id'=>$order->id,
+                'contract'=>$order->contracts?->contractnumber,
+                'asset'=>$order->assets?->registrationnumber,
+                'product'=>$order->products?->name,
+                'startdate'=>$order->startdate,
+                'finishdate'=>$order->finishdate,
+                'starttime'=>$order->starttime,
+                'finishtime'=>$order->finishtime,
+                'totalweight'=>$order->totalweight,
+                'totaldistance'=>$order->totaldistance,
+                'chargetype'=>$order->chargetype,
+                'amount'=>$order->amount,
+                'status'=>$order->status
+            );
+            
+        }
+        return response($data, 200);
+    }
+
+    public function save_load(Request $r){
+        $load=Load::find($r->order_id);
+        $load->status=$r->status;
+        $load->save();
+        return response($load, 200);
+        
     }
 
 }
